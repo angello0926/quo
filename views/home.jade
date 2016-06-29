@@ -1,27 +1,69 @@
 extends layout
 
+block head
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  link(rel='stylesheet', type='text/css', href='/css/home.css')
+  script(src='/js/home.js')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+
+
 block content
-  h1 Hackathon Starter
-  p.lead A boilerplate for Node.js web applications.
-  hr
-  .row
-    .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-default(href='#', role='button') View details »
-    .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-default(href='#', role='button') View details »
-    .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-default(href='#', role='button') View details »
-    .col-sm-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-default(href='#', role='button') View details »
+ .row.container-fluid
+  div.propichome.col-xs-4.col-sm-4.col-md-2.col-md-offset-3(style="background-image:url('#{user.profile.picture}')")
+  div.profile.col-xs-8.col-sm-8.col-md-3
+    ul
+      li.about About:
+      li #{user.profile.about}
+      li.post Posts: #{postno}
+      li.subscribing Subscribe: #{subscribe}
+      li.followers Followers: #{followers}
+
+ .row.container-fluid
+   -var ob = json
+   -for(var prop in ob)
+       div.quotepic.col-xs-12.col-sm-12.col-md-6.col-md-offset-3
+        span.trash.glyphicon.glyphicon-trash(aria-hidden='true')
+        span.bookmark.glyphicon.glyphicon-bookmark(aria-hidden='true') #{ob[prop].bookmarked}
+        img(class='quotesimg' data='#{ob[prop].quote_pic}' src="/#{ob[prop].quote_pic}")
+       div.content.col-xs-12.col-sm-12.col-md-6.col-md-offset-3
+          .row
+            blockquote
+              p
+                | #{ob[prop].captions}
+          .row
+            p
+              span.spanstyle #{ob[prop].tags}
+              span.spanstyle #{ob[prop].author}
+              span.spanstyle #{ob[prop].title}
+
+            span.date #{ob[prop].createdAt}
+            hr
+
+
+
+
+block script
+  script.
+    $( document ).ready(function() {
+      $('.trash').click(function(event) {
+        event.stopPropagation();
+        var quotetodelete=$(event.target).parent().find($('img'));
+        var quote_pic_name= quotetodelete.attr('data');
+        console.log(quote_pic_name);
+        $.ajax({
+         method: "DELETE",
+         url: "/post/delete",
+         data: {
+           quoteFilename: quote_pic_name,
+           '_csrf': $( "meta[name='csrf-token']").attr('content')
+         },
+         success: function(response){
+                       window.location.href = "/home";
+                  }
+     }, false);
+        });
+    });
+
+
+
+

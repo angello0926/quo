@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title #{title} - QUO
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7', crossorigin='anonymous')
+    link(rel='stylesheet', type="text/css",href='/css/welcome.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js')
+    script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+
+
+body
+
+      .row
+        .col-xs-12.col-xs-offset-0.col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4
+          img(src='/assets/logo.svg')
+          h1 One Step more ...
+          h4 Please enter your email :)
+          form.form-horizontal(action='/account/profile', method='POST')
+            input(type='hidden', name='_csrf', value=_csrf)
+            .form-group
+              label.col-sm-3.control-label(for='email') Email
+              .col-sm-7
+                input.form-control(type='email', name='email', id='email', value='')
+            .form-group
+              .col-sm-offset-3.col-sm-4
+                button(type='submit')
+                  i.fa.fa-pencil
+                  | Submit
+
