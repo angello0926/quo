@@ -1,13 +1,11 @@
 const bcrypt = require('bcrypt-nodejs');
 const crypto = require('crypto');
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'),
+      Schema = mongoose.Schema
+const Post = require('../models/Post');
 
 const userSchema = new mongoose.Schema({
   email: { type: String, unique: true },
-  password: String,
-  passwordResetToken: String,
-  passwordResetExpires: Date,
-
   facebook: String,
   twitter: String,
   google: String,
@@ -20,11 +18,19 @@ const userSchema = new mongoose.Schema({
   profile: {
     name: { type: String, default: '' },
     gender: { type: String, default: '' },
-    location: { type: String, default: '' },
-    website: { type: String, default: '' },
+    about: {type: String,default:''},
     picture: { type: String, default: '' }
-  }
+  },
+
+
+  bookmarked:[{ type: Schema.ObjectId, ref: 'Post' }],
+  posts: [{ type: Schema.ObjectId, ref: 'Post' }],
+
+  following: [{ type: Schema.ObjectId, ref: 'User' }],
+  followers: [{ type: Schema.ObjectId, ref: 'User' }]
+
 }, { timestamps: true });
+
 
 /**
  * Password hash middleware.

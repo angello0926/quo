@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="516px" height="161px" viewBox="0 0 516 161" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>welcome page</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="welcome-page" transform="translate(-381.000000, -398.000000)" fill="#000000">
+            <g id="Group" transform="translate(407.000000, 209.000000)">
+                <text id="“" font-family="Arial-Black, Arial Black" font-size="55.3483536" font-weight="700">
+                    <tspan x="0" y="254.854419">“</tspan>
+                </text>
+                <text id="”" font-family="Arial-Black, Arial Black" font-size="55.3483536" font-weight="700">
+                    <tspan x="446.520646" y="316.256499">”</tspan>
+                </text>
+                <text id="Share-your-quotes," font-family="Avenir-Light, Avenir" font-size="41.5112652" font-weight="300">
+                    <tspan x="44.9982047" y="254.015598">Share your quotes,</tspan>
+                    <tspan x="44.9982047" y="311.015598">Share your thoughts.</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,167 @@
+#container{
+  margin-top: 30px;
+  width:300px;
+  height:225px;
+  background-color:#F8F8F8;
+  margin: 0 auto;
+}
+
+button:focus {
+  outline:0;
+}
+
+#control{
+  margin-top: 10px;
+  width: 100%;
+
+}
+
+#controlcontent{
+  margin-top: 30px;
+}
+
+#Q,#C,#S{
+  font-family: "arial black" ,sans-serif;
+  background-color: white;
+  border: none;
+  font-size: 20px;
+  text-align: center;
+}
+
+.focused{
+border-bottom: 5px solid black  !important;
+
+}
+
+textarea{
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+}
+
+.font{
+  display: inline-block;
+  margin-bottom: 5px;
+
+}
+
+#submit{
+  margin-bottom: 5px;
+}
+
+
+
+.radio-group2{
+ margin-top: 10px;
+}
+
+.color, .bgcolor{
+  width:40px;
+  height:40px;
+  display: inline-block;
+  border: 2px solid hsla(0, 0%, 62%, 0.45);
+
+}
+
+.colorScheme{
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.chooseowncolor{
+  margin-bottom: 10px;
+}
+
+
+#save{
+   padding-right:10px;
+   padding-left:10px;
+   font-size: 24px;
+   font-family: 'calibri', sans-serif;
+   background-color: black;
+   color:white;
+   outline: 0;
+   margin-top: 30px;
+   border-radius: 5px;
+   border: none;
+   margin: 0 auto;
+}
+
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 40px solid black;
+  margin-bottom: 10px;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.square{
+  width:40px;
+  height:40px;
+  background-color: black;
+   margin-bottom: 10px;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.circle{
+  width:40px;
+  height:40px;
+  background-color: black;
+   margin-bottom: 10px;
+   border-radius: 20px;
+   display: inline-block;
+   margin-left: 10px;
+
+
+}
+
+.info{
+  font-family: "arial black",sans-serif;
+  color: white;
+  background-color: black;
+  width:auto;
+  padding:5px;
+  margin-bottom: 10px;
+}
+
+.shapesize{
+  width:100px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+#btnshape{
+  background: black;
+  outline: 0;
+  color: white;
+  border-radius: 5px;
+  margin-top:10px;
+  border: none;
+}
+
+
+.quotesimg{
+  width:100%;
+}
+
+p,input{
+  margin-left: 15px;
+  font-family:'Inconsolata', sans-sanrif;
+}
+
+label{
+  margin-left: 15px;
+}
+
+#width, #height{
+  width: 40px;
+  padding: 3px;
+}
+
+.info{
+  padding-left: 15px;
+}

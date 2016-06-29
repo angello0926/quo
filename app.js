@@ -17,7 +17,7 @@ const passport = require('passport');
 const expressValidator = require('express-validator');
 const sass = require('node-sass-middleware');
 const multer = require('multer');
-const upload = multer({ dest: path.join(__dirname, 'uploads') });
+const upload = multer({ dest: path.join(__dirname, 'uploads'), storage: multer.memoryStorage({}) });
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -27,8 +27,18 @@ dotenv.load({ path: '.env.example' });
 /**
  * Controllers (route handlers).
  */
-const homeController = require('./controllers/home');
+const welcomeController = require('./controllers/welcome');
 const userController = require('./controllers/user');
+const exploreController=require('./controllers/explore');
+const subscribeController=require('./controllers/subs');
+const userpageController=require('./controllers/userpage');
+const editorController=require('./controllers/editor');
+const bookmarkController=require('./controllers/bookmark');
+const homeController = require('./controllers/home');
+const postController = require('./controllers/post');
+
+
+
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 
@@ -99,11 +109,65 @@ app.use((req, res, next) => {
   next();
 });
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+app.use(express.static(path.join(__dirname, 'uploads'), { maxAge: 31557600000 }));
 
 /**
  * Primary app routes.
  */
-app.get('/', homeController.index);
+app.get('/', welcomeController.index);
+app.get('/email',passportConfig.isAuthenticated,welcomeController.email);
+app.post('/email',passportConfig.isAuthenticated,userController.postUpdateProfile);
+
+app.route('/explore')
+   .all(passportConfig.isAuthenticated)
+   .get(exploreController.index)
+
+app.route('/home')
+   .all(passportConfig.isAuthenticated)
+   .get(homeController.index)
+
+app.route('/post/delete')
+    .all(passportConfig.isAuthenticated)
+    .delete(postController.delete)
+
+app.route('/subscription')
+   .all(passportConfig.isAuthenticated)
+   .get(subscribeController.index)
+
+app.route('/editor')
+   .all(passportConfig.isAuthenticated)
+   .get(editorController.index)
+
+//app.route('/editor/saveimage')
+//   .post(editorController.uploadimage)
+
+app.route('/editor/saveimage')
+   .all(passportConfig.isAuthenticated)
+   .post(upload.single('imgBase64'), editorController.postSaveimage)
+
+
+app.route('/editor/addcaption')
+    .all(passportConfig.isAuthenticated)
+    .get(editorController.getaddcaption)
+
+app.route('/editor/submit')
+    .all(passportConfig.isAuthenticated)
+    .post(editorController.submission)
+
+
+app.route('/bookmark')
+   .all(passportConfig.isAuthenticated)
+   .get(bookmarkController.index)
+
+app.route('/userpage')
+   .all(passportConfig.isAuthenticated)
+   .get(userpageController.index)
+
+
+
+
+
+
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
@@ -163,11 +227,11 @@ app.post('/api/pinterest', passportConfig.isAuthenticated, passportConfig.isAuth
  */
 app.get('/auth/instagram', passport.authenticate('instagram'));
 app.get('/auth/instagram/callback', passport.authenticate('instagram', { failureRedirect: '/login' }), (req, res) => {
-  res.redirect(req.session.returnTo || '/');
+  res.redirect(req.session.returnTo || '/home');
 });
 app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_location'] }));
-app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }), (req, res) => {
-  res.redirect(req.session.returnTo || '/');
+app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/' }), (req, res) => {
+    res.redirect(req.session.returnTo || '/email');
 });
 app.get('/auth/github', passport.authenticate('github'));
 app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), (req, res) => {
@@ -178,8 +242,8 @@ app.get('/auth/google/callback', passport.authenticate('google', { failureRedire
   res.redirect(req.session.returnTo || '/');
 });
 app.get('/auth/twitter', passport.authenticate('twitter'));
-app.get('/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/login' }), (req, res) => {
-  res.redirect(req.session.returnTo || '/');
+app.get('/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/' }), (req, res) => {
+  res.redirect(req.session.returnTo || '/email');
 });
 app.get('/auth/linkedin', passport.authenticate('linkedin', { state: 'SOME STATE' }));
 app.get('/auth/linkedin/callback', passport.authenticate('linkedin', { failureRedirect: '/login' }), (req, res) => {
@@ -209,6 +273,13 @@ app.get('/auth/pinterest', passport.authorize('pinterest', { scope: 'read_public
 app.get('/auth/pinterest/callback', passport.authorize('pinterest', { failureRedirect: '/login' }), (req, res) => {
   res.redirect('/api/pinterest');
 });
+
+
+
+
+
+
+
 
 /**
  * Error Handler.

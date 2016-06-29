@@ -3,12 +3,15 @@ html
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    meta(name='theme-color' content='#4DA5F4')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
     meta(name='csrf-token', content=_csrf)
-    title #{title} - Hackathon Starter
-    link(rel='shortcut icon', href='/favicon.png')
-    link(rel='stylesheet', href='/css/main.css')
+    title #{title} - QUO
+    link(href='https://fonts.googleapis.com/css?family=Merriweather|Inconsolata|Abel|Quicksand|Playfair+Display:900|Roboto+Condensed:700', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', type="text/css",href='/css/main.css')
+    link(rel='stylesheet', type="text/css",href='/css/style.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js')
+    script(src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+    block head
 
   body
     include partials/header
@@ -31,3 +34,4 @@ html
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-XXXXX-X', 'auto');
       ga('send', 'pageview');
+    block script

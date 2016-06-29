@@ -1,0 +1,138 @@
+extends layout
+
+block head
+   link(rel='stylesheet', type='text/css', href='/css/editorquo.css')
+   script(src='https://code.jquery.com/jquery-3.0.0.js', integrity='sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo=', crossorigin='anonymous')
+   script(src='https://cdn.rawgit.com/konvajs/konva/0.15.0/konva.min.js')
+   script(src='/js/editorquo.js')
+
+
+block content
+
+  section
+    .row
+      .col-xs-12.col-sm-12.col-md-6.col-md-offset-0.col-lg-5.col-lg-offset-1
+        #container
+        #control
+          .row
+            .col-xs-4.col-xs-offset-4.col-sm-4.col-sm-offset-4.col-md-4.col-md-offset-4
+              .row
+                button#Q Q
+                button#C C
+                button#S S
+      .col-xs-12.col-sm-12.col-md-6.col-md-offset-0.col-lg-6
+        #controlcontent
+          .Qcontent.hidden
+            .form-group
+              form#fontfamily
+                .radio-group1
+                  label.radio-inline
+                    input#font1(type='radio', name='fontfamily', value='Merriweather')
+                    |  Merriweather
+                  label.radio-inline
+                    input#font2(type='radio', name='fontfamily', value='Inconsolata')
+                    |  Inconsolata
+                  label.radio-inline
+                    input#font3(type='radio', name='fontfamily', value='Abel')
+                    |  Abel
+                .radio-group1
+                  label.radio-inline
+                    input#font4(type='radio', name='fontfamily', value='Quicksand')
+                    |  Quicksand
+                  label.radio-inline
+                    input#font5(type='radio', name='fontfamily', value='Playfair Display')
+                    |  Playfair Display
+                  label.radio-inline
+                    input#font6(type='radio', name='fontfamily', value='Roboto Condensed')
+                    |  Roboto Condensed
+              form#fontsize
+                label.radio-inline
+                  input#size12(type='radio', name='textsize', value='Body Text')
+                  |  Body Text
+                label.radio-inline
+                  input#size36(type='radio', name='textsize', value='Header Text')
+                  |  Header Text
+                label.radio-inline
+                  input#size8(type='radio', name='textsize', value='Small Text')
+                  |  Small Text
+              .col-sm-3.colorScheme
+                .color.colorPalette1(data-color='020101', style='background-color: #020101;')
+                .color.colorPalette1(data-color='FFFFFF', style='background-color: #FFFFFF;')
+                .color.colorPalette1(data-color='555555', style='background-color: #555555;')
+                .color.colorPalette1(data-color='31302C', style='background-color: #31302C;')
+              .col-sm-3.colorScheme
+                .color.colorPalette2(data-color='FCEE21', style='background-color: #FCEE21;')
+                .color.colorPalette2(data-color='0B2B62', style='background-color: #0B2B62;')
+                .color.colorPalette2(data-color='2DA3E1', style='background-color: #2DA3E1;')
+                .color.colorPalette2(data-color='CE5229', style='background-color: #CE5229;')
+              .col-sm-3.colorScheme
+                .color.colorPalette1(data-color='B5B09C', style='background-color: #B5B09C;')
+                .color.colorPalette1(data-color='CF352B', style='background-color: #CF352B;')
+                .color.colorPalette1(data-color='0A2037', style='background-color: #0A2037;')
+                .color.colorPalette1(data-color='072527', style='background-color: #072527;')
+              .col-sm-12.chooseowncolor
+                script(src='/js/jscolor.min.js')
+                |                        Or Choose your own color:
+                input.jscolor(value='')
+              textarea#addtext.form-control(rows='3', placeholder='quotes')
+              button#submit  submit
+          .Ccontent.hidden
+            .form-group
+              .col-sm-12.colorScheme
+                .bgcolor.colorPalette1(data-color='#FFFFFF', style='background-color: #FFFFFF;')
+                .bgcolor.colorPalette1(data-color='#F7EFEF', style='background-color: #F7EFEF;')
+                .bgcolor.colorPalette1(data-color='#EFEFE6', style='background-color: #EFEFE6;')
+                .bgcolor.colorPalette1(data-color='#F8F8F8', style='background-color: #F8F8F8;')
+                .bgcolor.colorPalette1(data-color='#F0F0F0', style='background-color: #F0F0F0;')
+                .bgcolor.colorPalette1(data-color='#31302C', style='background-color: #31302C;')
+                .bgcolor.colorPalette1(data-color='#555555', style='background-color: #555555;')
+              .col-sm-12.colorScheme
+                .bgcolor.colorPalette1(data-color='#1DAE8B', style='background-color: #1DAE8B;')
+                .bgcolor.colorPalette1(data-color='#FDD000', style='background-color: #FDD000;')
+                .bgcolor.colorPalette1(data-color='#EC6625', style='background-color: #EC6625;')
+                .bgcolor.colorPalette1(data-color='#E83D38', style='background-color: #E83D38;')
+                .bgcolor.colorPalette1(data-color='#3498DB', style='background-color: #3498DB;')
+                .bgcolor.colorPalette1(data-color='#45BCD2', style='background-color: #45BCD2;')
+                .bgcolor.colorPalette1(data-color='#FEA500', style='background-color: #FEA500;')
+                .bgcolor.colorPalette1(data-color='#F15C22', style='background-color: #F15C22;')
+                .bgcolor.colorPalette1(data-color='#F8ACAE', style='background-color: #F8ACAE;')
+                .bgcolor.colorPalette1(data-color='#C8C5E2', style='background-color: #C8C5E2;')
+                .bgcolor.colorPalette1(data-color='#8DD8F8', style='background-color: #8DD8F8;')
+                .bgcolor.colorPalette1(data-color='#082038', style='background-color: #082038;')
+                .bgcolor.colorPalette1(data-color='#A3C6C0', style='background-color: #A3C6C0;')
+                .bgcolor.colorPalette1(data-color='#167C80', style='background-color: #167C80;')
+                .bgcolor.colorPalette1(data-color='#EA846D', style='background-color: #EA846D;')
+                .col-sm-12.chooseowncolor
+                  script(src='/js/jscolor.min.js')
+                  p Or Choose your own color:
+                  input.jscolor.bgowncolor(value='')
+                  button#submitcolor  submit
+          .Scontent.hidden
+            .row.info Stroke?
+            .row
+              script(src='/js/jscolor.min.js')
+              p Choose your own color:
+              input.jscolor.strokecolor(value='')
+              button#submit  submit
+            .row.info Fill?
+            .row
+              script(src='/js/jscolor.min.js')
+              p Choose your own color:
+              input.jscolor.fillcolor(value='')
+              button#submit  submit
+            .row.info Size?
+            .row
+              label Width
+              input#width.form-control.shapesize(type='number', min='1', max='480', name='width', placeholder='12')
+              label Height
+              input#height.form-control.shapesize(type='number', min='1', max='480', name='height', placeholder='12')
+            .row.info Get your Shapes
+            .row
+              .circle
+              .square
+              .arrow-up
+        .row
+          .col-xs-4.col-xs-offset-4
+            button#save Next
+
+
