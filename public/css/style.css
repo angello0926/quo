@@ -12,3 +12,8 @@ input{
   height:30px;
   width:auto;
 }
+
+.icon{
+  width:100%;
+  color: black;
+}

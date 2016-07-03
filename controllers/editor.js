@@ -60,6 +60,7 @@ exports.submission =(req, res) => {
       doc.author=req.body.author;
       doc.title= req.body.title;
       doc.tags=req.body.tags;
+      doc.published=true;
       doc.save();
       console.log(doc)
       res.send('success');

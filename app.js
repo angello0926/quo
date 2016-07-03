@@ -130,6 +130,19 @@ app.route('/post/delete')
     .all(passportConfig.isAuthenticated)
     .delete(postController.delete)
 
+app.route('/post/show/:data/:creator')
+    .all(passportConfig.isAuthenticated)
+    .get(exploreController.showpost)
+
+app.route('/bookmark/:picname')
+    .all(passportConfig.isAuthenticated)
+    .get(bookmarkController.addbookmark)
+
+app.route('/subs/:userid')
+    .all(passportConfig.isAuthenticated)
+    .get(subscribeController.followUser)
+
+
 app.route('/subscription')
    .all(passportConfig.isAuthenticated)
    .get(subscribeController.index)

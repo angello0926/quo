@@ -1,3 +1,17 @@
 extends layout
 
+block head
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  link(rel='stylesheet', type='text/css', href='/css/home.css')
+  script(src='/js/home.js')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+
+
 block content
+
+  -var ob = posts
+   -for(var prop in ob)
+      .col-xs-12.col-sm-6.col-md-3
+        .row
+          .content.col-xs-12.col-sm-12.col-md-12
+            img(class='quotesimg quotesimgfeed' data='#{ob[prop].quote_pic}' src="/#{ob[prop].quote_pic}")
