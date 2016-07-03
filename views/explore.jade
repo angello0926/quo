@@ -1,3 +1,142 @@
 extends layout
 
+block head
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  link(rel='stylesheet', type='text/css', href='/css/home.css')
+  script(src='/js/home.js')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+
 block content
+ .row.main
+  .row
+    .col-xs-12.col-sm-12
+     .button.closex X
+
+    .container-fluid.eachpage
+      .row
+        .col-sm-12.col-xs-12
+          .col-md-3.col-xs-12.col-sm-12
+            .row
+              .propichome.col-xs-4.col-sm-4.col-md-2.col-md-offset-3
+              .profile.col-xs-8.col-sm-8.col-md-3
+                  ul
+                    li.username(data='')
+                    li About:
+                    li.about
+                    li.post Posts:
+                      span.postno
+                    li.followers Followers:
+                      span.followno
+              .col-xs-12.col-sm-12.col-md-5.col-md-offset-3
+                   button.btn#followbutton Follow
+          .quotepic.col-xs-12.col-sm-12.col-md-6
+            .row
+              .col-xs-12.col-sm-12
+                span.bookmark.glyphicon.glyphicon-bookmark(aria-hidden='true')
+                #showimg
+              .col-xs-12.col-sm-12
+                blockquote
+                  p.cap
+                p
+                  span.spanstyle.tags
+                  span.spanstyle.author
+                  span.spanstyle.title
+                p.date
+                  hr
+
+
+   -var ob = posts
+   -for(var prop in ob)
+      .col-xs-12.col-sm-6.col-md-3
+        .row
+          .content.col-xs-12.col-sm-12.col-md-12
+            img(class='quotesimg quotesimgfeed' data='#{ob[prop].quote_pic}' data-creator='#{ob[prop]._creator._id}' src="/#{ob[prop].quote_pic}")
+
+block script
+  script.
+    $(function(){
+      $('.closex').hide();
+      $('.eachpage').hide();
+      $('.closex').click(function(event){
+              $('.quotesimg').show();
+              $('.eachpage').hide();
+              $('.closex').hide();
+        });
+
+      $( ".quotesimg" ).click(function(event){
+        event.stopPropagation();
+        var quote_pic_name= $(event.target).attr('data');
+        var creator= $(event.target).attr('data-creator');
+        console.log(creator);
+        $.ajax({
+           method: "GET",
+           url: "/post/show/"+quote_pic_name+"/"+creator,
+           success: function(package){
+             console.log(package);
+             $('#showimg').html('');
+             $('.quotesimg').hide();
+             $('.closex').show();
+             $('.propichome').css("background-image","url('"+package.post[0]._creator.profile.picture+"')")
+             $('.username').text(package.post[0]._creator.profile.name)
+             $('.username').attr('data', package.post[0]._creator._id)
+             $('.postno').text(package.post[0]._creator.posts.length)
+             $('.followno').text(package.post[0]._creator.followers.length)
+             $('.bookmark').text(package.post[0].bookmarked.length)
+             if(package.bookmark){
+               $('.bookmark').addClass('bookmarked');
+             }
+             $('.about').text(package.post[0]._creator.profile.about)
+              if(package.following){
+               $('#followbutton').text('unfollow');
+             }
+              if(!package.following){
+               $('#followbutton').text('follow');
+             }
+             if(package.post[0]._creator._id===package.requser){
+               $('#followbutton').hide();
+             }else{
+                $('#followbutton').show();
+             }
+             $('#showimg').append("<img class='imgfitcol' data='"+package.post[0].quote_pic+"' src='/"+package.post[0].quote_pic+"'>")
+             $('.cap').text(package.post[0].captions)
+             $('.tags').text(package.post[0].tags)
+             $('.author').text(package.post[0].author)
+             $('.title').text(package.post[0].title)
+             $('.date').text(package.post[0].createdAt)
+             $('.eachpage').show().fadeIn(1000);
+
+           }
+        }, false);
+
+      });
+
+        $('#showimg').dblclick(function(event){
+           var quote_pic_name= $(event.target).attr('data');
+           $.ajax({
+               method: "GET",
+               url: "/bookmark/"+quote_pic_name,
+               success: function(data){
+                console.log(data);
+                 $('.bookmark').text(data.bookmark_no);
+                if(data.bookmark){
+                 $('.bookmark').addClass('bookmarked');
+               }else{
+                   $('.bookmark').removeClass('bookmarked');
+               }
+               }
+            });
+        });
+
+        $('#followbutton').click(function(event){
+           var userid= $('.username').attr('data');
+           console.log(userid);
+           $.ajax({
+               method: "GET",
+               url: "/subs/"+userid,
+               success: function(data){
+                if(!data) $('#followbutton').text('unfollow');
+                if(data) $('#followbutton').text('follow');
+               }
+            });
+        });
+    });

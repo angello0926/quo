@@ -17,7 +17,7 @@ exports.index = (req, res) => {
    res.render('home', {
     title: 'Home', json: posts , postno: num_p , subscribe: num_f , followers: num_ff});
 
-})
+  })
 
 
 

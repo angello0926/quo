@@ -23,7 +23,7 @@ exports.delete = (req, res) => {
               console.log(item + " deleted");
             });
           });
-       });
+      });
     });
 
 };

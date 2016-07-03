@@ -11,7 +11,8 @@ const postSchema = new mongoose.Schema({
   title:  { type: String, default: '' },
   tags:  [{ type: String, default: '' }],
   _creator: { type: Schema.ObjectId, ref: 'User' },
-  bookmarked : [{ type: Schema.ObjectId, ref: 'User' }]
+  bookmarked : [{ type: Schema.ObjectId, ref: 'User' }],
+  published: false
 }, { timestamps: true });
 
 

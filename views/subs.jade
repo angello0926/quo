@@ -1,3 +1,39 @@
 extends layout
 
+block head
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  link(rel='stylesheet', type='text/css', href='/css/home.css')
+  script(src='/js/home.js')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+
 block content
+   -var ob = posts
+   -for(var prop in ob)
+    .row
+      .col-md-3.col-md-offset-1.col-xs-12.col-sm-4
+        .row
+          .propichome.col-xs-4.col-sm-4.col-md-2.col-md-offset-3(style="background-image:url('#{ob[prop]._creator.profile.picture}')")
+          .profile.col-xs-8.col-sm-8.col-md-3
+            ul
+              li.about About:
+              li #{ob[prop]._creator.profile.about}
+              li.post Posts: #{ob[prop]._creator.posts.length}
+              li.followers Followers: #{ob[prop]._creator.followers.length}
+      .col-md-6.col-xs-12.col-sm-8
+        .row
+          div.quotepic.col-xs-12.col-sm-12.col-md-12
+            span.bookmark.glyphicon.glyphicon-bookmark(aria-hidden='true') #{ob[prop].bookmarked.length}
+            img(class='quotesimg' data='#{ob[prop].quote_pic}' src="/#{ob[prop].quote_pic}")
+          div.content.col-xs-12.col-sm-12.col-md-12
+              .row
+                blockquote
+                  p
+                    | #{ob[prop].captions}
+              .row
+                p
+                  span.spanstyle #{ob[prop].tags}
+                  span.spanstyle #{ob[prop].author}
+                  span.spanstyle #{ob[prop].title}
+
+                span.date #{ob[prop].createdAt}
+                hr

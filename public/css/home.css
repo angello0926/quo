@@ -31,6 +31,8 @@ ul{
 .quotesimg{
   width:100%;
   margin-top: 10px;
+  padding: 2px;
+
 }
 
 
@@ -39,6 +41,10 @@ blockquote{
     padding-left: 10px;
     margin-left: 15px;
     margin-top: 10px;
+}
+
+.explore_quote{
+   margin-left: 0px;
 }
 
 .propicshow{
@@ -74,9 +80,62 @@ blockquote{
 
 p{
   margin-left: 15px;
+  font-size: 12px;
+  font-family: 'Merriweather', sanrif;
 }
 
 .glyphicon{
   margin-top: 10px;
   font-size: 20px;
+}
+
+
+#showimg{
+   position: relative;
+}
+
+.bookmark_explore{
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.quotesimgfeed:hover{
+  background-color:  black;
+  cursor: pointer;
+}
+
+.closex{
+  float: right;
+  margin-right: 30px;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: "arial black", sans-sanrif;
+}
+
+.username{
+  font-size: 16px;
+
+}
+
+.imgfitcol{
+  width:100%;
+}
+
+.bookmarked{
+  color: green;
+}
+
+#followbutton, #followbutton:hover{
+  background-color: black;
+  border: none;
+  color: white;
+}
+
+.nopost{
+  padding: 10px 10px 10px 10px;
+  background-color: #E7E7E7;
+  color: white;
+  font-size: 36px;
+  font-family: 'Inconsolata', sans-sanrif;
+  text-transform: uppercase;
 }
