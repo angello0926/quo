@@ -1,9 +1,9 @@
 #container{
-  margin-top: 30px;
+  margin-top: 20px;
   width:300px;
   height:225px;
   background-color:#F8F8F8;
-  margin: 0 auto;
+
 }
 
 button:focus {
@@ -12,16 +12,17 @@ button:focus {
 
 #control{
   margin-top: 10px;
+  margin-bottom: 10px;
   width: 100%;
 
 }
 
 #controlcontent{
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 #Q,#C,#S{
-  font-family: "arial black" ,sans-serif;
+
   background-color: white;
   border: none;
   font-size: 20px;
@@ -47,6 +48,10 @@ textarea{
 
 #submit{
   margin-bottom: 5px;
+  border-radius: 5px;
+  background-color: #01C26E;
+  color: white;
+  font-family: 'Inconsolata';
 }
 
 
@@ -120,7 +125,7 @@ textarea{
 }
 
 .info{
-  font-family: "arial black",sans-serif;
+  font-family: 'Inconsolata';
   color: white;
   background-color: black;
   width:auto;
@@ -151,6 +156,7 @@ textarea{
 p,input{
   margin-left: 15px;
   font-family:'Inconsolata', sans-sanrif;
+  margin-bottom: 5px;
 }
 
 label{
@@ -163,5 +169,50 @@ label{
 }
 
 .info{
-  padding-left: 15px;
+  padding-left: 20px;
 }
+
+.glyphicon{
+  font-size: 20px;
+}
+
+
+.font1{
+   font-family: 'Merriweather';
+
+}
+
+.font2{
+   font-family: 'Inconsolata';
+
+}
+
+.font3{
+   font-family: 'Abel';
+
+}
+
+.font4{
+   font-family: 'Quicksand';
+
+}
+
+.font5{
+   font-family: 'Playfair Display';
+
+}
+
+.font6{
+   font-family: 'Roboto Condensed';
+}
+
+#fontfamily{
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+#fontsize{
+  margin-bottom: 10px;
+  font-family:'Inconsolata', sans-sanrif;
+}
+

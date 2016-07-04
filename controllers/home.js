@@ -9,6 +9,16 @@ exports.index = (req, res) => {
   var followers= req.user.followers;
   var num_ff=followers.length;
 
+User
+  .findOne({'email': 'angelyy@gmail.com'})
+  .exec(function (err, user) {
+  if (err) console.log('fail');
+    user.profile.name= "LO YUK YU";
+    user.save();
+    console.log(user);
+  });
+
+
   Post
   .find({'_creator': req.user.id})
   .sort({'createdAt':-1})

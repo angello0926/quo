@@ -3,6 +3,7 @@ $( document ).ready(function() {
     var canvaheight = 225;
 
   function menu(){
+     $('.Qcontent').removeClass('hidden')
 
  $('#Q').click(function(event) {
     event.stopPropagation();

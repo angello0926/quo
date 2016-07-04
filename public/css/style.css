@@ -17,3 +17,17 @@ input{
   width:100%;
   color: black;
 }
+
+.icon:hover{
+  color: #91CED7 ;
+}
+
+
+
+.nav{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ECF0F1;
+}
+
+

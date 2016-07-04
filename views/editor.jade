@@ -3,6 +3,7 @@ extends layout
 block head
    link(rel='stylesheet', type='text/css', href='/css/editorquo.css')
    link(rel='stylesheet', type="text/css",href='/css/style.css')
+   link(rel='stylesheet', type='text/css', href='/css/home.css')
    script(src='https://code.jquery.com/jquery-3.0.0.js', integrity='sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo=', crossorigin='anonymous')
    script(src='https://cdn.rawgit.com/konvajs/konva/0.15.0/konva.min.js')
    script(src='/js/editorquo.js')
@@ -12,71 +13,78 @@ block content
 
   section
     .row
-      .col-xs-12.col-sm-12.col-md-6.col-md-offset-0.col-lg-5.col-lg-offset-1
+      .col-xs-12.col-sm-12.col-md-4.col-lg-offset-1.col-lg-4.col-lg-offset-2
         #container
         #control
           .row
             .col-xs-4.col-xs-offset-4.col-sm-4.col-sm-offset-4.col-md-4.col-md-offset-4
               .row
-                button#Q Q
-                button#C C
-                button#S S
-      .col-xs-12.col-sm-12.col-md-6.col-md-offset-0.col-lg-6
+                button#Q.glyphicon.glyphicon-font
+                button#C.glyphicon.glyphicon-tint
+                button#S.glyphicon.glyphicon-picture
+      .col-xs-12.col-sm-12.col-md-6.col-lg-6
         #controlcontent
           .Qcontent.hidden
+            .row.info Choose Font Style
             .form-group
               form#fontfamily
                 .radio-group1
                   label.radio-inline
                     input#font1(type='radio', name='fontfamily', value='Merriweather')
-                    |  Merriweather
+                    .font1 Quote
                   label.radio-inline
                     input#font2(type='radio', name='fontfamily', value='Inconsolata')
-                    |  Inconsolata
+                    .font2 Quote
                   label.radio-inline
                     input#font3(type='radio', name='fontfamily', value='Abel')
-                    |  Abel
+                    .font3 Quote
                 .radio-group1
                   label.radio-inline
                     input#font4(type='radio', name='fontfamily', value='Quicksand')
-                    |  Quicksand
+                    .font4 Quote
                   label.radio-inline
                     input#font5(type='radio', name='fontfamily', value='Playfair Display')
-                    |  Playfair Display
+                    .font5 Quote
                   label.radio-inline
                     input#font6(type='radio', name='fontfamily', value='Roboto Condensed')
-                    |  Roboto Condensed
+                    .font6 Quote
+              .row.info Choose Font Size
               form#fontsize
+                label.radio-inline
+                  input#size8(type='radio', name='textsize', value='Small Text')
+                  |  Small Text
                 label.radio-inline
                   input#size12(type='radio', name='textsize', value='Body Text')
                   |  Body Text
                 label.radio-inline
                   input#size36(type='radio', name='textsize', value='Header Text')
                   |  Header Text
-                label.radio-inline
-                  input#size8(type='radio', name='textsize', value='Small Text')
-                  |  Small Text
-              .col-sm-3.colorScheme
-                .color.colorPalette1(data-color='020101', style='background-color: #020101;')
-                .color.colorPalette1(data-color='FFFFFF', style='background-color: #FFFFFF;')
-                .color.colorPalette1(data-color='555555', style='background-color: #555555;')
-                .color.colorPalette1(data-color='31302C', style='background-color: #31302C;')
-              .col-sm-3.colorScheme
-                .color.colorPalette2(data-color='FCEE21', style='background-color: #FCEE21;')
-                .color.colorPalette2(data-color='0B2B62', style='background-color: #0B2B62;')
-                .color.colorPalette2(data-color='2DA3E1', style='background-color: #2DA3E1;')
-                .color.colorPalette2(data-color='CE5229', style='background-color: #CE5229;')
-              .col-sm-3.colorScheme
-                .color.colorPalette1(data-color='B5B09C', style='background-color: #B5B09C;')
-                .color.colorPalette1(data-color='CF352B', style='background-color: #CF352B;')
-                .color.colorPalette1(data-color='0A2037', style='background-color: #0A2037;')
-                .color.colorPalette1(data-color='072527', style='background-color: #072527;')
-              .col-sm-12.chooseowncolor
-                script(src='/js/jscolor.min.js')
-                |                        Or Choose your own color:
-                input.jscolor(value='')
-              textarea#addtext.form-control(rows='3', placeholder='quotes')
-              button#submit  submit
+              .row.info Choose Font Color
+              .row
+                .col-sm-3.colorScheme
+                  .color.colorPalette1(data-color='020101', style='background-color: #020101;')
+                  .color.colorPalette1(data-color='FFFFFF', style='background-color: #FFFFFF;')
+                  .color.colorPalette1(data-color='555555', style='background-color: #555555;')
+                  .color.colorPalette1(data-color='31302C', style='background-color: #31302C;')
+                .col-sm-3.colorScheme
+                  .color.colorPalette2(data-color='FCEE21', style='background-color: #FCEE21;')
+                  .color.colorPalette2(data-color='0B2B62', style='background-color: #0B2B62;')
+                  .color.colorPalette2(data-color='2DA3E1', style='background-color: #2DA3E1;')
+                  .color.colorPalette2(data-color='CE5229', style='background-color: #CE5229;')
+                .col-sm-3.colorScheme
+                  .color.colorPalette1(data-color='B5B09C', style='background-color: #B5B09C;')
+                  .color.colorPalette1(data-color='CF352B', style='background-color: #CF352B;')
+                  .color.colorPalette1(data-color='0A2037', style='background-color: #0A2037;')
+                  .color.colorPalette1(data-color='072527', style='background-color: #072527;')
+                .col-sm-12.chooseowncolor
+                  script(src='/js/jscolor.min.js')
+                  p Or Choose your own color:
+                  input.jscolor(value='')
+              .row.info Enter your text content
+              .row
+                .col-sm-12
+                  textarea#addtext.form-control(rows='3', placeholder='quotes')
+                  button.btn#submit  Send text to the canvas!
           .Ccontent.hidden
             .form-group
               .col-sm-12.colorScheme
@@ -107,20 +115,20 @@ block content
                   script(src='/js/jscolor.min.js')
                   p Or Choose your own color:
                   input.jscolor.bgowncolor(value='')
-                  button#submitcolor  submit
+                  button.btn#submitcolor  submit
           .Scontent.hidden
             .row.info Stroke?
             .row
               script(src='/js/jscolor.min.js')
               p Choose your own color:
               input.jscolor.strokecolor(value='')
-              button#submit  submit
+
             .row.info Fill?
             .row
               script(src='/js/jscolor.min.js')
               p Choose your own color:
               input.jscolor.fillcolor(value='')
-              button#submit  submit
+
             .row.info Size?
             .row
               label Width
