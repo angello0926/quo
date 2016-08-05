@@ -9,28 +9,13 @@ exports.index = (req, res) => {
   var followers= req.user.followers;
   var num_ff=followers.length;
 
-User
-  .findOne({'email': 'angelyy@gmail.com'})
-  .exec(function (err, user) {
-  if (err) console.log('fail');
-    user.profile.name= "LO YUK YU";
-    user.save();
-    console.log(user);
-  });
-
-
-  Post
+Post
   .find({'_creator': req.user.id})
   .sort({'createdAt':-1})
   .exec(function (err, posts) {
-
-   res.render('home', {
+  res.render('home', {
     title: 'Home', json: posts , postno: num_p , subscribe: num_f , followers: num_ff});
-
   })
-
-
-
 };
 
 

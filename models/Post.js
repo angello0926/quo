@@ -1,10 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
 const User = require('../models/User');
-
 const postSchema = new mongoose.Schema({
-
   captions:  { type: String, default: '' },
   quote_pic: '',
   author : { type: String, default: '' },
@@ -15,7 +12,5 @@ const postSchema = new mongoose.Schema({
   published: false
 }, { timestamps: true });
 
-
 const Post = mongoose.model('Post', postSchema);
-
 module.exports = Post;

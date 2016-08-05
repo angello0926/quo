@@ -22,7 +22,6 @@ const userSchema = new mongoose.Schema({
     picture: { type: String, default: '' }
   },
 
-
   bookmarked:[{ type: Schema.ObjectId, ref: 'Post' }],
   posts: [{ type: Schema.ObjectId, ref: 'Post' }],
 

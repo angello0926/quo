@@ -1,7 +1,7 @@
 const Post = require('../models/Post');
 const User = require('../models/User');
-var fs    = require("fs");
-var uuid = require('node-uuid');
+var fs     = require("fs");
+var uuid   = require('node-uuid');
 
 exports.index = (req, res) => {
   res.render('editor',{title: 'Editor'});
@@ -22,7 +22,7 @@ exports.postSaveimage = (req, res, next) => {
     if (err) return next(err);
     console.log('saved');
     res.send({redirect: '/editor_addcaption'});
-   })
+  })
 }
 
 
@@ -47,8 +47,6 @@ exports.submission =(req, res) => {
   var quote_pic= String;
   var array= req.user.posts;
   var num=array.length;
-
-
   User
   .findOne({'_id': req.user.id})
   .populate('posts')
